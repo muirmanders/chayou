@@ -1,0 +1,6 @@
+To build the dictionary, follow these steps:
+ 1. Install Apple developer tools so you have "make" and the dictionary build tools (install XCode from App Store)
+ 2. Download CC-CEDICT someplace and update the Makefile to point to it
+ 3. Run "make" to build the dictionary bundle
+ 4. Run "make install" if it built correctly
+ 5. Run Dictionary.app to test out the dictionary (note that you sometimes have to twiddle the dictionary preferences under "Preferences" in the Dictionary.app to get it to refresh)

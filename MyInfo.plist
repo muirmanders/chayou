@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.muirsoft.dictionary.chinese</string>
+	<key>CFBundleName</key>
+	<string>查友</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>DCSDictionaryCopyright</key>
+	<string>Copyright © 2011 Muir Manders</string>
+	<key>DCSDictionaryManufacturerName</key>
+	<string>Muirsoft</string>
+	<key>DCSDictionaryFrontMatterReferenceID</key>
+	<string>front_back_matter</string>
+	<key>DCSDictionaryPrefsHTML</key>
+	<string>MyDictionary_prefs.html</string>
+	<key>DCSDictionaryXSL</key>
+	<string>MyDictionary.xsl</string>
+	<key>DCSDictionaryDefaultPrefs</key>
+	<dict>
+		<key>charset</key>
+		<string>0</string>
+		<key>version</key>
+		<string>1</string>
+	</dict>
+
+</dict>
+</plist>
