@@ -55,3 +55,4 @@ install:
 
 clean:
 	$(RM) -rf $(DICT_DEV_KIT_OBJ_DIR)
+	$(RM) MyDictionary.xml
