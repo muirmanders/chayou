@@ -8,7 +8,7 @@
 
 # You need to edit these values.
 
-DICT_NAME		=	"查友"
+DICT_NAME		=	查友
 DICT_SRC_PATH		=	MyDictionary.xml
 CSS_PATH		=	MyDictionary.css
 PLIST_PATH		=	MyInfo.plist
@@ -24,8 +24,10 @@ DICT_BUILD_OPTS		=
 # The DICT_BUILD_TOOL_DIR value is used also in "build_dict.sh" script.
 # You need to set it when you invoke the script directly.
 
-DICT_BUILD_TOOL_DIR	=	"/Developer/Extras/Dictionary Development Kit"
-DICT_BUILD_TOOL_BIN	=	"$(DICT_BUILD_TOOL_DIR)/bin"
+DICT_BUILD_TOOL_DIR	=	/Developer-3.2.6/Extras/Dictionary Development Kit
+export DICT_BUILD_TOOL_DIR
+DICT_BUILD_TOOL_BIN	=	$(DICT_BUILD_TOOL_DIR)/bin
+export DICT_BUILD_TOOL_BIN
 
 ###########################
 
