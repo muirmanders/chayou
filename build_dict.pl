@@ -117,6 +117,10 @@ foreach my $entry (map { sort common_first @$_ } values %entries) {
 	my $simp = join '', @{$entry->{simp}};
 	print $out qq{\t<d:index d:value="$trad"/>\n};
 	print $out qq{\t<d:index d:value="$simp"/>\n} if $want_simp;
+
+	(my $py_no_tones = $entry->{raw_py}) =~ s/[\d\s]//g;
+	$py_no_tones =~ s/u:/v/g;
+	print $out qq{\t<d:index d:value="$py_no_tones"/>\n};
 	
 	print $out qq{\t<div d:priority="2"><h1>$title</h1></div>\n};
 	print $out qq{\t<span class="syntax">\n};
