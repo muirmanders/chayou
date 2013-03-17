@@ -1,3 +1,5 @@
+You can download a pre-built dictionary here: http://public.muir.io/查友.zip
+
 Chayou (查友), meaning something like "search buddy", is a Chinese Mac OS X Dictionary.app plugin generated using CC-CEDICT. After installing the plugin, there will be a new "查友" tab in the Dictionary application you can use to look up Chinese words. You can use a double three-fingered tap or ctrl-command-d (default key bindings) in many other system programs to perform automatic lookups without having to open the Dictionary app.
 
 This is made/tested for 10.7 (Lion) but it might also work on Snow Leopard (haven't tried).
