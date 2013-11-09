@@ -26,7 +26,7 @@ my %to_unicode = (
 	'u:' => ["\x{01D6}", "\x{01D8}", "\x{01DA}", "\x{01DC}"],
 );
 
-my (%entries, %py_count, @proper);
+my (%entries, %py_count, %char_count, @proper);
 
 my $id = 1;
 while (<$fh>) {
@@ -46,13 +46,16 @@ while (<$fh>) {
 		id => "${simp}_${id}",
 	};
 	
-	# keep counts of how each pronunciation for each character (so we can 
-	# choose the "most common" pronunciation as the default)
+	# keep basic counts of per-char pronunciation and per-pronunciation character
+	# so we can order things a little more intelligently
 	for (my $i = 0; $i < @{$entry->{trad}}; $i++) {
 		$py_count{$entry->{simp}[$i]}{$entry->{py}[$i]}++;
 		if ($entry->{simp}[$i] ne $entry->{trad}[$i]) {
-			$py_count{$entry->{trad}[$i]}{$entry->{py}[$i]}++;			
+			$py_count{$entry->{trad}[$i]}{$entry->{py}[$i]}++;						
 		}
+		my $py_no_tones = $entry->{py}[$i];
+		$py_no_tones =~ s/\d\s//g;
+		$char_count{$py_no_tones}{$entry->{trad}[$i]}++;
 	}
 	
 	# track proper nouns separately so we can merge them in
@@ -90,16 +93,18 @@ sub entry_commonness_score {
 	my $score = 0;
 	for (my $i = 0; $i < @{$entry->{simp}}; $i++) {
 		$score += $py_count{$entry->{simp}[$i]}{$entry->{py}[$i]} || 0;
+		(my $py_no_tones = $entry->{py}[$i]) =~ s/\d\s//g;
+		$score += $char_count{$py_no_tones}{$entry->{trad}[$i]} || 0;
 	}
 	return $score;
 }
 
 sub common_first { entry_commonness_score($b) <=> entry_commonness_score($a) }
 
-foreach my $entry (map { sort common_first @$_ } values %entries) {
+foreach my $entry (sort common_first map { @$_ } values %entries) {
 	my @trad_chars = @{$entry->{trad}};
 	my @simp_chars = @{$entry->{simp}};
-	
+
 	# decide if trad and simp differ (but show '~' for characters that don't differ)
 	my $want_simp = 0;
 	for (my $i = 0; $i < @trad_chars; $i++) {
