@@ -114,7 +114,9 @@ foreach my $entry (map { sort common_first @$_ } values %entries) {
 
 	print $out qq{<d:entry id="$entry->{id}" d:title="title">\n};
 	my $trad = join '', @{$entry->{trad}};
+	$trad =~ s/[[:punct:]]//g;
 	my $simp = join '', @{$entry->{simp}};
+	$simp =~ s/[[:punct:]]//g;
 	print $out qq{\t<d:index d:value="$trad"/>\n};
 	print $out qq{\t<d:index d:value="$simp"/>\n} if $want_simp;
 
