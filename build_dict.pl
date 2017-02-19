@@ -139,6 +139,9 @@ foreach my $entry (sort common_first map { @$_ } values %entries) {
 	# print out a list element for each definition
 	my $mw = '';
 	foreach my $def (@{$entry->{defs}}) {
+		# Escape ampersands first, before more are created by subsequent escaping
+		$def =~ s/&/&amp;/g;
+
 		$def =~ s/</&lt;/g;
 		$def =~ s/>/&gt;/g;
 		
