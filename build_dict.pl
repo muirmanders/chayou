@@ -42,7 +42,7 @@ while (<$fh>) {
 		raw_simp => $simp,
 		py => [split ' ', $py],
 		raw_py => lc($py),
-		defs => [split '/', $defs],
+		defs => [split '/', $defs =~ s/&/&amp;/rg],
 		id => "${simp}_${id}",
 	};
 	
