@@ -42,7 +42,7 @@ while (<$fh>) {
 		raw_simp => $simp,
 		py => [split ' ', $py],
 		raw_py => lc($py),
-		defs => [split '/', $defs =~ s/&/&amp;/rg],
+		defs => [split '/', $defs],
 		id => "${simp}_${id}",
 	};
 	
@@ -139,6 +139,9 @@ foreach my $entry (sort common_first map { @$_ } values %entries) {
 	# print out a list element for each definition
 	my $mw = '';
 	foreach my $def (@{$entry->{defs}}) {
+		# Escape ampersands first, before more are created by subsequent escaping
+		$def =~ s/&/&amp;/g;
+
 		$def =~ s/</&lt;/g;
 		$def =~ s/>/&gt;/g;
 		
